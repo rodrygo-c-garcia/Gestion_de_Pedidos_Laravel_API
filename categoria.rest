@@ -1,0 +1,30 @@
+### index -> obtener
+GET http://127.0.0.1:8000/api/categoria
+
+### store -> guardar
+
+POST http://127.0.0.1:8000/api/categoria
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nombre": "ELECTRODOMESTICOS",
+    "detalle": "Electrodomesticos para el Hogar"
+}
+
+
+### show -> mostrar
+GET http://127.0.0.1:8000/api/categoria/1
+
+### update -> modificar por id
+PUT http://127.0.0.1:8000/api/categoria/2
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nombre": "ROPA",
+    "detalle": "Ropas para todo evento"
+}
+
+### destroy -> eliminar
+DELETE http://127.0.0.1:8000/api/categoria/6

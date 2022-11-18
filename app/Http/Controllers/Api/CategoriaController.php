@@ -56,18 +56,20 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            // Verficamos que se pueda guardar los camios en el id especicado
-            "nombre" => "required|max:50|min:3|unique:categorias,nombre,$id",
-        ]);
-
         $categoria = Categoria::where("id", $id)->first();
+
+        // Si existe la categoria
         if ($categoria) {
+            $request->validate([
+                // Verficamos que se pueda guardar los camios en el id especicado
+                "nombre" => "required|max:50|min:3|unique:categorias,nombre,$id",
+            ]);
+
             $categoria->nombre = $request->nombre;
             $categoria->detalle = $request->detalle;
             $categoria->save();
 
-            return response()->json(["mensaje" => "Categoria Modificada", "data" => $categoria], 201);
+            return response()->json(["mensaje" => "Categoria Modificada", "data" => $categoria], 200);
         }
         return response()->json(["mensaje" => "No se encontro la categoria"], 404);
     }
@@ -75,6 +77,12 @@ class CategoriaController extends Controller
 
     public function destroy($id)
     {
-        // Clase dia 4 hora 1: Minuto 12
+        $categoria = Categoria::where("id", $id)->first();
+
+        if ($categoria) {
+            $categoria->delete();
+            return response()->json(["mensaje" => "Categoria Eliminada"], 200);
+        }
+        return response()->json(["mensaje" => "No se encontro la categoria"], 404);
     }
 }
