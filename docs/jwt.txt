@@ -1,0 +1,8 @@
+instalacion dependencia JWT
+
+1.- instalar dependencia
+    1ra.- opcion v8 php
+composer require tymon/jwt-auth:dev-develop --prefer-source
+    2da.- opcion
+composer require tymon/jwt-auth "^1.0"
+
