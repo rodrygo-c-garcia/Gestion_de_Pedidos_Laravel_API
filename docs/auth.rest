@@ -6,3 +6,9 @@ Accept: application/json
     "email": "colqueariel023@gmail.com",
     "password": "rodrigo1234"
 }
+
+### perfil
+
+POST http://127.0.0.1:8000/api/auth/me
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2Njk3NjQ3NzYsImV4cCI6MTY2OTc2ODM3NiwibmJmIjoxNjY5NzY0Nzc2LCJqdGkiOiJYUEVmRVlSR1pVbW5qNHAzIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.xShw4hzLRDqeTrG3qMF_UMGAO3N8WjWV-oHUoYs5zG0
