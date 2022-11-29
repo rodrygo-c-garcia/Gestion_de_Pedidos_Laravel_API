@@ -15,3 +15,4 @@ php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServicePro
 php artisan jwt:secret
 
 4.- configurar el model
+ link de JWT-AUTH  https://jwt-auth.readthedocs.io/en/develop/quick-start/
