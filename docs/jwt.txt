@@ -6,3 +6,10 @@ composer require tymon/jwt-auth:dev-develop --prefer-source
     2da.- opcion
 composer require tymon/jwt-auth "^1.0"
 
+
+2.- Publicar el archivo de configuracion (config/jwt.php)
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+
+3.- Generar key
+php artisan jwt:secret
