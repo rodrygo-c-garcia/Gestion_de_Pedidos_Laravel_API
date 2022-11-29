@@ -26,3 +26,17 @@ Route::apiResource("producto", ProductoController::class);
 Route::apiResource("cliente", ClienteController::class);
 Route::apiResource("pedido", PedidoController::class);
 Route::apiResource("usuario", UsuarioController::class);
+
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+});
