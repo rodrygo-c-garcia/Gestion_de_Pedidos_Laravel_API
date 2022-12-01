@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ClienteController;
 use App\Http\Controllers\Api\PedidoController;
 use App\Http\Controllers\Api\UsuarioController;
 use App\Http\Controllers\AuthController;
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,11 +23,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     PUT /api/categoria/{id}         (update -> modificar)
     DELETE /api/categoria/{id}      (destroy -> eliminar)
 */
-Route::apiResource("categoria", CategoriaController::class);
-Route::apiResource("producto", ProductoController::class);
-Route::apiResource("cliente", ClienteController::class);
-Route::apiResource("pedido", PedidoController::class);
-Route::apiResource("usuario", UsuarioController::class);
+// Protegiendo las rutas cono sanctum, para acceder tenemos que loggearnos
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource("categoria", CategoriaController::class);
+    Route::apiResource("producto", ProductoController::class);
+    Route::apiResource("cliente", ClienteController::class);
+    Route::apiResource("pedido", PedidoController::class);
+    Route::apiResource("usuario", UsuarioController::class);
+});
 
 
 // JWT-AUTH
@@ -41,4 +45,13 @@ Route::group([
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
+});
+
+
+// SANCTUM
+
+Route::post('/tokens/create', function (Request $request) {
+    $token = $request->user()->createToken($request->token_name);
+
+    return ['token' => $token->plainTextToken];
 });
