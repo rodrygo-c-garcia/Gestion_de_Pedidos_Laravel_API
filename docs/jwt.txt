@@ -13,8 +13,12 @@ composer require tymon/jwt-auth "^1.0"
 php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 
 
-3.- Generar key
+3.- Generar key private for JWT
 php artisan jwt:secret
 
-4.- configurar el model
- link de JWT-AUTH  https://jwt-auth.readthedocs.io/en/develop/quick-start/
+4.- configurar el model user
+ link de JWT-AUTH >  https://jwt-auth.readthedocs.io/en/develop/quick-start/
+
+5. - Configure Auth guard
+6. - Add some basic authentication routes
+7. - Create the AuthController
