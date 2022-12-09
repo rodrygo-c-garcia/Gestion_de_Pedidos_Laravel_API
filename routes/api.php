@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     PUT /api/categoria/{id}         (update -> modificar)
     DELETE /api/categoria/{id}      (destroy -> eliminar)
 */
-// Protegiendo las rutas cono sanctum, para acceder tenemos que loggearnos
+// Protegiendo las rutas con sanctum, para acceder tenemos que loggearnos
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource("categoria", CategoriaController::class);
     Route::apiResource("producto", ProductoController::class);
@@ -50,7 +50,6 @@ Route::group([
 
 
 // SANCTUM
-
 Route::post('/tokens/create', function (Request $request) {
     $token = $request->user()->createToken($request->token_name);
 
