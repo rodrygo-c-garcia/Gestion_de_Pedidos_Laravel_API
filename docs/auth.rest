@@ -1,3 +1,11 @@
+#
+# En php artisan Tinker
+# $user->name = "Rodrigo"
+# $user->email = "colqueariel023@gmail.com"
+# $user->password = bcrypt("colqueariel023@gmail.com")
+#$user->save(
+
+
 POST http://127.0.0.1:8000/api/auth/login
 Content-Type: application/json
 Accept: application/json
@@ -27,3 +35,5 @@ Accept: application/json
 {
     "token_name": "prueba",
 }
+
+
