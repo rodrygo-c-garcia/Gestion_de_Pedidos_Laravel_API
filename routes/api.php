@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ClienteController;
 use App\Http\Controllers\Api\PedidoController;
 use App\Http\Controllers\Api\UsuarioController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SanctumAuthController;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -50,3 +51,8 @@ Route::group([
 
 
 // SANCTUM
+
+Route::post('login', [SanctumAuthController::class, 'login']);
+Route::post('registro', [SanctumAuthController::class, 'registro']);
+Route::middleware('auth:sanctum')->group(function () {
+});
