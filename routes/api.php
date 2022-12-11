@@ -54,5 +54,8 @@ Route::group([
 
 Route::post('login', [SanctumAuthController::class, 'login']);
 Route::post('registro', [SanctumAuthController::class, 'registro']);
+
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('perfil', [SanctumAuthController::class, 'perfil']);
+    Route::post('logout', [SanctumAuthController::class, 'logout']);
 });
