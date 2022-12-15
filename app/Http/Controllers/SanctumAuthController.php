@@ -11,6 +11,29 @@ class SanctumAuthController extends Controller
     // registrar usuario
     public function login(Request $request)
     {
+        $request->validate([
+            "email" => "required|email",
+            "password" => "required",
+        ]);
+
+        // verificar correo
+        $user = User::where("email", "=", $request->email)->first();
+
+        if (isset($user->id)) {
+            // verificar el password
+            if (Hash::check($request->password, $user->password)) {
+                //generar el token
+                $token = $user->createToken("auth_token")->plainTextToken;
+                return response()->json([
+                    "mensaje" => "Usuario Logueado",
+                    "access_token" => $token
+                ]);
+            } else {
+                return response()->json(["mensaje" => "Contraseña Incorrecta", "error" => true], 200);
+            }
+        } else {
+            return response()->json(["mensaje" => "Usuario no existe", "error" => true], 200);
+        }
     }
 
     public function registro(Request $request)
