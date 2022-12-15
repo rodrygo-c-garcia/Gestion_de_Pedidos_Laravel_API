@@ -1,0 +1,11 @@
+### Registro
+POST http://127.0.0.1:8000/api/registro
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Oscar",
+    "email": "oscar@gmail.com",
+    "password": "oscar12345",
+    "password_confirmation": "oscar12345"
+}
