@@ -26,7 +26,8 @@ class SanctumAuthController extends Controller
                 $token = $user->createToken("auth_token")->plainTextToken;
                 return response()->json([
                     "mensaje" => "Usuario Logueado",
-                    "access_token" => $token
+                    "access_token" => $token,
+                    "error" => false
                 ]);
             } else {
                 return response()->json(["mensaje" => "Contraseña Incorrecta", "error" => true], 200);
