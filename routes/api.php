@@ -56,7 +56,7 @@ Route::group([
 Route::post('login', [SanctumAuthController::class, 'login']);
 Route::post('registro', [SanctumAuthController::class, 'registro']);
 
-// rutas de perfil y logout (cerrar sesion) es necerio registrar
+// rutas de perfil y logout (cerrar sesion) es necerio proteger
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('perfil', [SanctumAuthController::class, 'perfil']);
     Route::post('logout', [SanctumAuthController::class, 'logout']);

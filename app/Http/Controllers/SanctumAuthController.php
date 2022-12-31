@@ -10,16 +10,19 @@ class SanctumAuthController extends Controller
 {
     public function login(Request $request)
     {
+        // validar los datos
         $request->validate([
             "email" => "required|email",
             "password" => "required",
         ]);
 
-        // verificar correo
-        $user = User::where("email", "=", $request->email)->first();
+        // verificamos y obtenemos al usuario por su correo
+        //$user = User::where("email", "=", $request->email)->first();
+        $user = User::where("email", $request->email)->first();
 
+        // preguntamos si existe el id del usuario
         if (isset($user->id)) {
-            // verificar el password
+            // verificar el password con la clase Hash con su metodo check (verificacion)
             if (Hash::check($request->password, $user->password)) {
                 //generar el token
                 $token = $user->createToken("auth_token")->plainTextToken;
@@ -40,15 +43,17 @@ class SanctumAuthController extends Controller
     public function registro(Request $request)
     {
         // 1 -> validar
+        // reglas de validacion
         $request->validate([
             "name" => "required",
             "email" => "required|email|unique:users",
-            "password" => "required|confirmed",
+            "password" => "required|confirmed", // confirmacion de la contraseña
         ]);
         // 2 -> guardar
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        // encriptar la contraseña con la clase Hash
         $user->password = Hash::make($request->password);
         $user->save();
 
