@@ -20,22 +20,17 @@ class SanctumAuthController extends Controller
         //$user = User::where("email", "=", $request->email)->first();
         $user = User::where("email", $request->email)->first();
 
-        // preguntamos si existe el id del usuario
-        if (isset($user->id)) {
-            // verificar el password con la clase Hash con su metodo check (verificacion)
-            if (Hash::check($request->password, $user->password)) {
-                //generar el token
-                $token = $user->createToken("auth_token")->plainTextToken;
-                return response()->json([
-                    "mensaje" => "Usuario Logueado",
-                    "access_token" => $token,
-                    "error" => false
-                ]);
-            } else {
-                return response()->json(["mensaje" => "Contraseña Incorrecta", "error" => true], 200);
-            }
+        // preguntamos si existe el id del usuario y verificar el password con la clase Hash y su metodo check (verificacion)
+        if (isset($user->id) && Hash::check($request->password, $user->password)) {
+            //generar el token
+            $token = $user->createToken("auth_token")->plainTextToken;
+            return response()->json([
+                "mensaje" => "Usuario Logueado",
+                "access_token" => $token,
+                "error" => false
+            ]);
         } else {
-            return response()->json(["mensaje" => "Usuario no existe", "error" => true], 200);
+            return response()->json(["mensaje" => "Credenciales invalidas", "error" => true], 200);
         }
     }
 
