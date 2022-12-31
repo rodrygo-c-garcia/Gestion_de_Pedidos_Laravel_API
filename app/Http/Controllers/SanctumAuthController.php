@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 
 class SanctumAuthController extends Controller
 {
-    // registrar usuario
     public function login(Request $request)
     {
         $request->validate([
@@ -37,6 +36,7 @@ class SanctumAuthController extends Controller
         }
     }
 
+    // registrar usuario
     public function registro(Request $request)
     {
         // 1 -> validar
