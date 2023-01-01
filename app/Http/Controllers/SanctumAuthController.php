@@ -58,7 +58,10 @@ class SanctumAuthController extends Controller
 
     public function perfil()
     {
-        return Auth::user();
+        return response()->json([
+            "mensaje" => "Perfil",
+            "data" => Auth::user()
+        ]);
     }
 
     public function logout()
