@@ -69,4 +69,15 @@ class SanctumAuthController extends Controller
         // del usuario actual su usuario
         return Auth::user()->tokens()->delete();
     }
+
+
+    // Refrescar Token
+    public function refresh(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return response()->json([
+            'access_token' => $request->user()->createToken('api')->plainTextToken,
+        ]);
+    }
 }

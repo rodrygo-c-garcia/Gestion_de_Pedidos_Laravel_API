@@ -60,5 +60,7 @@ Route::post('registro', [SanctumAuthController::class, 'registro']);
 // rutas de perfil y logout (cerrar sesion) es necerio proteger
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('perfil', [SanctumAuthController::class, 'perfil']);
+    // refresh sin funcionar todavia
+    Route::get('refresh', [SanctumAuthController::class, 'refresh']);
     Route::post('logout', [SanctumAuthController::class, 'logout']);
 });
