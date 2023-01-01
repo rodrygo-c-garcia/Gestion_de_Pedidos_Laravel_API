@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     PUT /api/categoria/{id}         (update -> modificar)
     DELETE /api/categoria/{id}      (destroy -> eliminar)
 */
+
 // Protegiendo las rutas con sanctum, para acceder tenemos que loggearnos
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource("categoria", CategoriaController::class);
