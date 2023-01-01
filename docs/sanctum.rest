@@ -25,3 +25,9 @@ Accept: application/json
 GET http://127.0.0.1:8000/api/perfil
 Content-Type: application/json
 Accept: application/json
+
+### Logout
+POST http://127.0.0.1:8000/api/logout
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 14|pFp3L373q9zZAvltG1oxveRoVDWB2QRcXNBIiy4N

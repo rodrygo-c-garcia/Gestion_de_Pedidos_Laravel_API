@@ -66,5 +66,7 @@ class SanctumAuthController extends Controller
 
     public function logout()
     {
+        // del usuario actual su usuario
+        return Auth::user()->tokens()->delete();
     }
 }
