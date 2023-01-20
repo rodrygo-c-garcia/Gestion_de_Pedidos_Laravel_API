@@ -12,7 +12,7 @@ class ProductoController extends Controller
     public function index()
     {
         // cuantos datos por pagina enviamos
-        $productos = Producto::paginate(10);
+        $productos = Producto::paginate(5);
         return response()->json($productos, 200);
     }
 
