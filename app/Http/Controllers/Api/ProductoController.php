@@ -22,32 +22,26 @@ class ProductoController extends Controller
         // validar antes de guardar
         $request->validate([
             "nombre" => "required|unique:producto|max:20|min:3",
+            'precio' => "required",
+            'categoria_id' => "required"
         ]);
 
-        // creamos nuevo producto
-        $cat = new Producto();
-        $cat->nombre = $request->nombre;
-        $cat->detalle = $request->detalle;
-        $cat->save();
+        $name_img = '';
+        if ($file = $request->file('imagen')) {
+            $name_img = time() . "-" . $file->getClientOriginalName();
+            $file->move('imagenes');
+        }
+        // creamos nuevo Producto
+        $producto = new Producto();
+        $producto->nombre = $request->nombre;
+        $producto->precio = $request->precio;
+        $producto->stock = $request->stock;
+        $producto->descripcion = $request->descripcion;
+        $producto->estado = $request->estado;
+        $producto->categoria_i = $request->categoria_i;
+        $producto->imagen = '/imagenes' . $name_img;
+        $producto->save();
 
-        return response()->json(["mensaje" => "Categoria Registrado", "data" => $cat], 201);
-    }
-
-
-    public function show($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        //
+        return response()->json(["mensaje" => "Producto Registrado", "data" => $producto], 201);
     }
 }
