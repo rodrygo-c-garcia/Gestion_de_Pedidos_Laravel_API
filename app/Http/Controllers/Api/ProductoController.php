@@ -44,4 +44,11 @@ class ProductoController extends Controller
 
         return response()->json(["mensaje" => "Producto Registrado", "data" => $producto], 201);
     }
+
+
+    public function show($id)
+    {
+        $producto = Producto::find($id);
+        return response()->json($producto, 200);
+    }
 }
