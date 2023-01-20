@@ -83,4 +83,12 @@ class ProductoController extends Controller
 
         return response()->json(["mensaje" => "Producto Modificado"], 201);
     }
+
+
+    public function destroy($id)
+    {
+        $producto = Producto::find($id);
+        $producto->delete();
+        return response()->json(['mensaje' => 'Producto eliminado'], 200);
+    }
 }
