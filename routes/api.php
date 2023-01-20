@@ -36,19 +36,19 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
 // JWT-AUTH
-Route::group([
+// Route::group([
 
-    'middleware' => 'api',
-    'prefix' => 'auth'
+//     'middleware' => 'api',
+//     'prefix' => 'auth'
 
-], function ($router) {
+// ], function ($router) {
 
-    //Route::post('login', 'AuthController@login');
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout']);
-    Route::post('refresh', [AuthController::class, 'refresh']);
-    Route::post('me', [AuthController::class, 'me']);
-});
+//     //Route::post('login', 'AuthController@login');
+//     Route::post('login', [AuthController::class, 'login']);
+//     Route::post('logout', [AuthController::class, 'logout']);
+//     Route::post('refresh', [AuthController::class, 'refresh']);
+//     Route::post('me', [AuthController::class, 'me']);
+// });
 
 
 // SANCTUM
