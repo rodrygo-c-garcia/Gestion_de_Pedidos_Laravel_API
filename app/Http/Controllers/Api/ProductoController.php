@@ -21,7 +21,7 @@ class ProductoController extends Controller
     {
         // validar antes de guardar
         $request->validate([
-            "nombre" => "required|unique:producto|max:20|min:3",
+            "nombre" => "required|min:3|max:50|unique:productos",
             'precio' => "required",
             'categoria_id' => "required"
         ]);
@@ -38,7 +38,7 @@ class ProductoController extends Controller
         $producto->stock = $request->stock;
         $producto->descripcion = $request->descripcion;
         $producto->estado = $request->estado;
-        $producto->categoria_i = $request->categoria_i;
+        $producto->categoria_id = $request->categoria_id;
         $producto->imagen = '/imagenes' . $name_img;
         $producto->save();
 
