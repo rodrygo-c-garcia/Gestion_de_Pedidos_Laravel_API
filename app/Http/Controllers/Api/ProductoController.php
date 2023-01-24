@@ -13,7 +13,8 @@ class ProductoController extends Controller
     {
         // cuantos datos por pagina enviamos
         // limit la cantidad de productos
-        $request->limit ? $productos = Producto::paginate($request->limit) : $productos = Producto::paginate(5);
+        // retornamos el producto mas su categoria
+        $request->limit ? $productos = Producto::with('categoria')->paginate($request->limit) : $productos = Producto::paginate(5);
         return response()->json($productos, 200);
     }
 
@@ -31,6 +32,7 @@ class ProductoController extends Controller
         if ($file = $request->file('imagen')) {
             $name_img = time() . "-" . $file->getClientOriginalName();
             $file->move('imagenes');
+            $name_img = '/imagenes' . $name_img;
         }
         // creamos nuevo Producto
         $producto = new Producto();
@@ -40,7 +42,6 @@ class ProductoController extends Controller
         $producto->descripcion = $request->descripcion;
         $producto->estado = $request->estado;
         $producto->categoria_id = $request->categoria_id;
-        $producto->imagen = '/imagenes' . $name_img;
         $producto->save();
 
         return response()->json(["mensaje" => "Producto Registrado", "data" => $producto], 201);
