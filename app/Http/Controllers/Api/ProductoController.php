@@ -9,10 +9,11 @@ use App\Models\Producto;
 class ProductoController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         // cuantos datos por pagina enviamos
-        $productos = Producto::paginate(5);
+        // limit la cantidad de productos
+        $request->limit ? $productos = Producto::paginate($request->limit) : $productos = Producto::paginate(5);
         return response()->json($productos, 200);
     }
 
