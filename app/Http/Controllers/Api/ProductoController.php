@@ -29,10 +29,12 @@ class ProductoController extends Controller
         ]);
 
         $name_img = '';
-        if ($file = $request->file('imagen')) {
+        if ($file = $request->file("imagen")) {
+            return response()->json(["mensaje" => "Aqui esta tu imagen", "data" => $name_img], 201);
+
             $name_img = time() . "-" . $file->getClientOriginalName();
-            $file->move('imagenes');
-            $name_img = '/imagenes' . $name_img;
+            $file->move('imagenes', $name_img);
+            $name_img = '/imagenes/' . $name_img;
         }
         // creamos nuevo Producto
         $producto = new Producto();
@@ -42,6 +44,7 @@ class ProductoController extends Controller
         $producto->descripcion = $request->descripcion;
         $producto->estado = $request->estado;
         $producto->categoria_id = $request->categoria_id;
+        $producto->imagen = $name_img;
         $producto->save();
 
         return response()->json(["mensaje" => "Producto Registrado", "data" => $producto], 201);
