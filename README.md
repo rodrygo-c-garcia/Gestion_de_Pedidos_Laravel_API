@@ -11,7 +11,8 @@
 
 Backend del proyecto de Pedidos Blumbit
 * Tecnologias
-
+    * Sanctum
+    
 
 ## Learning Laravel
 
