@@ -10,9 +10,8 @@
 ## Proyecto de Pedidos Laravel con Vue.js
 
 Backend del proyecto de Pedidos Blumbit
+* Tecnologias
 
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 ## Learning Laravel
 
