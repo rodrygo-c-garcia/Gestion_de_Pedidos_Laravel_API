@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pedidos', function (Blueprint $table) {
-            //
+            // creamos nuestro campo 'estado' y decimos que se añada despues de 'usuario_id'
+            $table->integer('estado')->default(0)->after('user_id');
         });
     }
 
@@ -26,7 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('pedidos', function (Blueprint $table) {
-            // php artisan make:migration add_estado_to_pedidos_table
+            //
         });
     }
 };
