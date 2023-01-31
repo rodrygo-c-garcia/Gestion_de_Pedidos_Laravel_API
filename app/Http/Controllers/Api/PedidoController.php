@@ -44,7 +44,7 @@ class PedidoController extends Controller
             // obtenemos el id del usuario, es decir el admin del sistema
             $user = Auth::user();
             // buscamos el del cliente
-            $cliente = Cliente::findOrFail($request->cliente);
+            $cliente = Cliente::findOrFail($request->cliente_id);
 
             // generamos el pedido
             $pedido = new Pedido();
@@ -67,7 +67,7 @@ class PedidoController extends Controller
                     if ($producto->stock > $prod_cantidad) {
                         // relacion de muchos a muchos 'pedido_producto'
                         // del mismo pedido que estamos creanto en su producto hacemos incrustacion
-                        $pedido->productos->attach($producto->id, ['cantidad']);
+                        $pedido->productos()->attach($producto->id, ['cantidad' => $prod_cantidad]);
                     } else {
                         return response()->json(['message' => 'Cantidad inexistente del producto'], 400);
                     }
