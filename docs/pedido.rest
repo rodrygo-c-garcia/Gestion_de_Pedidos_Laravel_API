@@ -1,0 +1,8 @@
+POST http://127.0.0.1:8000/api/pedido
+Accept: application/application/json
+Content-Type: application/json
+Authorization: Bearer 84|bfNvQHeDADDmRPlxrEttP449MscZCzj4xlCFDgf0
+
+{
+
+}
