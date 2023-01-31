@@ -7,12 +7,12 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Proyecto de Pedidos Laravel con Vue.js
+## Proyecto de Pedidos Laravel con Vue.js (En Proceso)
 
 Backend del proyecto de Pedidos Blumbit
-
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* Tecnologias
+    * Sanctum
+    * Vite 3
 
 ## Learning Laravel
 
