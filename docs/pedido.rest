@@ -1,8 +1,17 @@
 POST http://127.0.0.1:8000/api/pedido
 Accept: application/application/json
 Content-Type: application/json
-Authorization: Bearer 84|bfNvQHeDADDmRPlxrEttP449MscZCzj4xlCFDgf0
+Authorization: Bearer 86|QgT0gdtIOnXY80uOdg3KuGznGEa7n44hwnFcVkzF
 
 {
-
+    "cod_factura": "0001",
+    "cliente_id": 1,
+    "productos": [{
+            "producto_id": 1,
+            "cantidad": 3
+        },
+        {
+            "producto_id": 2,
+            "cantidad": 5
+        }]
 }
