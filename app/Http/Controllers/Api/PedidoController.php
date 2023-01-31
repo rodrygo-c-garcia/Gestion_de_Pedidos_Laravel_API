@@ -96,6 +96,19 @@ class PedidoController extends Controller
     public function show($id)
     {
         //
+        try {
+            //$pedido = Pedido::with('cliente')->with('user')->FindOrFail($id);  // el cliente y usuario del pedido (id)
+            $pedido = Pedido::FindOrFail($id);
+            // obtenemos su cliente
+            $pedido->cliente;
+            // usuario que atendio
+            $pedido->user;
+            // los productos que pidio
+            $pedido->productos;
+            return response()->json($pedido);
+        } catch (\Exception $e) {
+            return response()->json(['mensaje' => 'El pedido no existe'], 404);
+        }
     }
 
     /**
