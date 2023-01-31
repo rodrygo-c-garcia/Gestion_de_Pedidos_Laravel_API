@@ -15,6 +15,7 @@ class Pedido extends Model
         return $this->belongsToMany(Producto::class)->withPivot(["cantidad"]);
     }
 
+    // pedido pertence a un cliente
     public function cliente()
     {
         return $this->belongsTo(Cliente::class);
