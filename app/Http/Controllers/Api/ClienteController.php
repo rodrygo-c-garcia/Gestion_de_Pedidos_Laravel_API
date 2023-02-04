@@ -39,6 +39,9 @@ class ClienteController extends Controller
     public function show($id)
     {
         //
+        $cliente = Cliente::find($id);
+        if ($cliente) return response()->json($cliente, 200);
+        return response()->json(["mensaje" => "No se encontro la cliente"], 404);
     }
 
 
