@@ -12,6 +12,8 @@ class ClienteController extends Controller
     public function index()
     {
         //
+        $lista_clientes = Cliente::all();
+        return response()->json($lista_clientes, 200);
     }
 
 
