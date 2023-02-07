@@ -14,7 +14,7 @@ Backend del proyecto de Pedidos Blumbit
     * Sanctum
     * Vite 3
 
-## Learning Laravel
+## Learning Laravel.
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
@@ -40,4 +40,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 ## Licensia
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT)
